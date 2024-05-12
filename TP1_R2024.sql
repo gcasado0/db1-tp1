@@ -16,13 +16,13 @@ venta_entrada
 entrada
     id integer (PK)
     recital_id integer (FK recital)
-    asiento_id (FK asiento)
+    asiento_id integer (FK asiento)
 
 recital
     id integer (PK)
     fecha_hora datetime
     artista varchar(100)
-    lugar_id varchar(100) (FK lugar)
+    lugar_id integer (FK lugar)
 
 seccion
     id integer (PK)
@@ -41,10 +41,3 @@ asiento
 lugar
     id integer (PK)
     nombre varchar(100)
-
-
-
-
-
-
-
