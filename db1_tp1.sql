@@ -1,4 +1,4 @@
-CREATE DATABASE db1_tp1;
+-- CREATE DATABASE db1_tp1;
 
 USE db1_tp1
 
@@ -76,25 +76,25 @@ INSERT INTO lugar (nombre) VALUES ('Defensores del Bajo');
 INSERT INTO recital (fecha_hora, artista, lugar_id)
 VALUES ('2024-06-15 20:00:00', 'El Cuarteto de 3', 1);
 
-INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES
-('Campo delantero', 500, 1, 2000),
-('Campo trasero', 300, 1, 3000),
-('Platea baja 1', 1000, 1, 500),
-('Platea baja 2', 1000, 1, 500),
+INSERT INTO seccion (id, nombre, precio, lugar_id, capacidad_maxima) VALUES
+(1,'Campo delantero', 500, 1, 2000),
+(2,'Campo trasero', 300, 1, 3000),
+(3,'Platea baja 1', 1000, 1, 500),
+(4,'Platea baja 2', 1000, 1, 500),
 ('Platea alta 1', 700, 1, 1000),
 ('Platea alta 2', 700, 1, 1000);
 
-INSERT INTO asiento (fila, numero, disponible, seccion_id) VALUES
+INSERT INTO asiento (id, fila, numero, disponible, seccion_id) VALUES
 -- campo
-('0', '0', 1, 1),
-('0', '0', 1, 2),
+(1, '0', '0', 1, 1),
+(2, '0', '0', 1, 2),
 -- platea baja 1
-('A', '1', 1, 3),
-('A', '2', 1, 3),
-('A', '3', 1, 3),
-('B', '1', 1, 3),
-('B', '2', 1, 3),
-('B', '3', 1, 3),
+(3, 'A', '1', 0, 3),
+(4, 'A', '2', 0, 3),
+(5, 'A', '3', 1, 3),
+(6, 'B', '1', 1, 3),
+(7, 'B', '2', 1, 3),
+(8, 'B', '3', 1, 3),
 -- platea baja 2
 ('A', '1', 1, 4),
 ('A', '2', 1, 4),
