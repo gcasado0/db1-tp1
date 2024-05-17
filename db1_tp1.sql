@@ -70,3 +70,53 @@ FOREIGN KEY (venta_id) REFERENCES venta(id),
 FOREIGN KEY (recital_id) REFERENCES recital(id),
 FOREIGN KEY (asiento_id) REFERENCES asiento(id)
 )
+
+INSERT INTO lugar (nombre) VALUES ('Defensores del Bajo');
+
+
+INSERT INTO recital (fecha_hora, artista, lugar_id)
+VALUES ('2024-06-15 20:00:00', 'El Cuarteto de 3', 1);
+
+INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES
+('Campo delantero', 500, 1, 2000),
+('Campo trasero', 300, 1, 3000),
+('Platea baja 1', 1000, 1, 500),
+('Platea baja 2', 1000, 1, 500),
+('Platea alta 1', 700, 1, 1000),
+('Platea alta 2', 700, 1, 1000);
+
+
+INSERT INTO asiento (fila, numero, disponible, seccion_id) VALUES
+('A', 1, 1, 3),
+('A', 2, 1, 3),
+('A', 3, 1, 3),
+('B', 1, 1, 3),
+('B', 2, 1, 3);
+
+INSERT INTO cliente (dni, nombre, apellido, fecha_nacimiento) VALUES
+('12345678A', 'Juan', 'Pérez', '1980-01-01'),
+('23456789B', 'María', 'García', '1990-02-02'),
+('34567890C', 'Luis', 'Martínez', '1975-03-03');
+
+
+INSERT INTO venta (fecha, cliente_dni) VALUES
+('2024-05-01', '12345678A'),
+('2024-05-02', '23456789B'),
+('2024-05-03', '34567890C');
+
+
+INSERT INTO entrada (venta_id, recital_id, asiento_id) VALUES
+(1, 1, 1),
+(1, 1, 2),
+(2, 1, 3),
+(3, 1, 4);
+
+INSERT INTO servicio (nombre) VALUES 
+('Acceso exclusivo'),
+('Catering');
+
+INSERT INTO seccion_servicio (seccion_id, servicio_id) VALUES
+(3, 1), 
+(3, 2), 
+(4, 1), 
+(4, 2); 
