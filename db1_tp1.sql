@@ -42,7 +42,7 @@ FOREIGN KEY (lugar_id) REFERENCES lugar(id)
 CREATE TABLE asiento (
 id int primary key identity (1,1) not null,
 fila varchar(100),
-numero money,
+numero varchar(100),
 disponible bit,
 seccion_id int,
 FOREIGN KEY (seccion_id) REFERENCES seccion(id)
@@ -69,10 +69,9 @@ PRIMARY KEY(venta_id, recital_id,asiento_id),
 FOREIGN KEY (venta_id) REFERENCES venta(id),
 FOREIGN KEY (recital_id) REFERENCES recital(id),
 FOREIGN KEY (asiento_id) REFERENCES asiento(id)
-)
+);
 
 INSERT INTO lugar (nombre) VALUES ('Defensores del Bajo');
-
 
 INSERT INTO recital (fecha_hora, artista, lugar_id)
 VALUES ('2024-06-15 20:00:00', 'El Cuarteto de 3', 1);
@@ -85,13 +84,38 @@ INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES
 ('Platea alta 1', 700, 1, 1000),
 ('Platea alta 2', 700, 1, 1000);
 
-
 INSERT INTO asiento (fila, numero, disponible, seccion_id) VALUES
-('A', 1, 1, 3),
-('A', 2, 1, 3),
-('A', 3, 1, 3),
-('B', 1, 1, 3),
-('B', 2, 1, 3);
+-- campo
+('0', '0', 1, 1),
+('0', '0', 1, 2),
+-- platea baja 1
+('A', '1', 1, 3),
+('A', '2', 1, 3),
+('A', '3', 1, 3),
+('B', '1', 1, 3),
+('B', '2', 1, 3),
+('B', '3', 1, 3),
+-- platea baja 2
+('A', '1', 1, 4),
+('A', '2', 1, 4),
+('A', '3', 1, 4),
+('B', '1', 1, 4),
+('B', '2', 1, 4),
+('B', '3', 1, 4),
+-- platea alta 1
+('A', '1', 1, 5),
+('A', '2', 1, 5),
+('A', '3', 1, 5),
+('B', '1', 1, 5),
+('B', '2', 1, 5),
+('B', '3', 1, 5),
+-- platea alta 2
+('A', '1', 1, 6),
+('A', '2', 1, 6),
+('A', '3', 1, 6),
+('B', '1', 1, 6),
+('B', '2', 1, 6),
+('B', '3', 1, 6);
 
 INSERT INTO cliente (dni, nombre, apellido, fecha_nacimiento) VALUES
 ('12345678A', 'Juan', 'Pérez', '1980-01-01'),
@@ -111,12 +135,12 @@ INSERT INTO entrada (venta_id, recital_id, asiento_id) VALUES
 (2, 1, 3),
 (3, 1, 4);
 
-INSERT INTO servicio (nombre) VALUES 
+INSERT INTO servicio (nombre) VALUES
 ('Acceso exclusivo'),
 ('Catering');
 
 INSERT INTO seccion_servicio (seccion_id, servicio_id) VALUES
-(3, 1), 
-(3, 2), 
-(4, 1), 
-(4, 2); 
+(3, 1),
+(3, 2),
+(4, 1),
+(4, 2);
