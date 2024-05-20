@@ -94,7 +94,7 @@ INSERT INTO asiento (fila, numero, disponible, seccion_id) VALUES
 ('A', '3', 1, 3),
 ('B', '1', 1, 3),
 ('B', '2', 1, 3),
-( 'B', '3', 1, 3),
+('B', '3', 1, 3),
 -- platea baja 2
 ('A', '1', 1, 4),
 ('A', '2', 1, 4),
