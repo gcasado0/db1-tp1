@@ -62,3 +62,20 @@ where l.nombre = 'Defensores del Bajo'
 and r.artista = 'El cuarteto de 3';
 GROUP BY s.nombre
 
+-- g. Mostrar el nombre del cliente y el precio total de todas las entradas vendidas a ese
+-- cliente para el recital del grupo "El Cuarteto de 3" en el estadio "Defensores del
+-- Bajo", ordenado por el precio total
+SELECT c.nombre nombre_cliente
+       SUM(precio) suma_ventas_cliente
+FROM db1_tp1.dbo.entrada e
+join recital r on r.id = e.recital_id
+join lugar l on l.id = r.lugar_id
+join asiento a on a.id = e.asiento_id
+join seccion s on s.id = a.seccion_id
+join venta v on v.id = e.venta_id
+join cliente c on c.id = v.cliente_DNI
+where l.nombre = 'Defensores del Bajo'
+and r.artista = 'El cuarteto de 3';
+
+
+-- h. Mostrar lo mismo que el punto anterior pero ordenado por nombre de cliente
