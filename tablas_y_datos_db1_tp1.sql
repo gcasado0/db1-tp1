@@ -43,7 +43,6 @@ CREATE TABLE asiento (
 id int primary key identity (1,1) not null,
 fila varchar(100),
 numero varchar(100),
-disponible bit,
 seccion_id int,
 FOREIGN KEY (seccion_id) REFERENCES seccion(id)
 )
@@ -94,7 +93,7 @@ INSERT INTO asiento (fila, numero, disponible, seccion_id) VALUES
 ('A', '3', 1, 3),
 ('B', '1', 1, 3),
 ('B', '2', 1, 3),
-( 'B', '3', 1, 3),
+('B', '3', 1, 3),
 -- platea baja 2
 ('A', '1', 1, 4),
 ('A', '2', 1, 4),

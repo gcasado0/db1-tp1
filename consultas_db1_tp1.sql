@@ -35,7 +35,7 @@ and r.artista = 'El cuarteto de 3');
 -- d. Calcular el total de ingresos generados por la venta de entradas para el recital del
 -- grupo "El Cuarteto de 3" en el estadio "Defensores del Bajo".
 
-SELECT SUM(precio) suma_ventas
+SELECT sum(s.precio) total_ingresos
 FROM db1_tp1.dbo.entrada e
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
@@ -47,35 +47,64 @@ and r.artista = 'El cuarteto de 3';
 -- e. Dado un DNI de un cliente obtener el nombre, la sección, el precio y el número de
 -- asiento (si corresponde) de todas las entradas compradas por ese cliente.
 
+select c.nombre, c.apellido,  s.nombre, s.precio, a.fila, a.numerofrom cliente cjoin venta v on c.dni = v.cliente_dni
+join entrada e on  e.venta_id = v.id
+join recital r on r.id = e.recital_id
+join lugar l on l.id = r.lugar_id
+join asiento a on a.id = e.asiento_id
+join seccion s on s.id = a.seccion_id
+where l.nombre = 'Defensores del Bajo'
+and r.artista = 'El cuarteto de 3'
+and c.dni = '12345678A';
+
+select c.nombre, c.apellido,  s.nombre, s.precio, a.fila, a.numerofrom cliente cjoin venta v on c.dni = v.cliente_dni
+join entrada e on  e.venta_id = v.id
+join recital r on r.id = e.recital_id
+join lugar l on l.id = r.lugar_id
+join asiento a on a.id = e.asiento_id
+join seccion s on s.id = a.seccion_id
+where l.nombre = 'Defensores del Bajo'
+and r.artista = 'El cuarteto de 3'
+and c.dni = '23456789B';
+
 
 -- f. Calcular el total de entradas vendidas por cada sección para el recital del grupo "El
 -- Cuarteto de 3" en el estadio "Defensores del Bajo"
 
-SELECT s.nombre nombre_seccion
-       COUNT(*) suma_ventas_por_seccion
+SELECT s.nombre seccion, count(s.id) total_entradas
 FROM db1_tp1.dbo.entrada e
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
 join asiento a on a.id = e.asiento_id
 join seccion s on s.id = a.seccion_id
 where l.nombre = 'Defensores del Bajo'
-and r.artista = 'El cuarteto de 3';
-GROUP BY s.nombre
+and r.artista = 'El cuarteto de 3'
+group by s.nombre;
 
 -- g. Mostrar el nombre del cliente y el precio total de todas las entradas vendidas a ese
 -- cliente para el recital del grupo "El Cuarteto de 3" en el estadio "Defensores del
 -- Bajo", ordenado por el precio total
-SELECT c.nombre nombre_cliente
-       SUM(precio) suma_ventas_cliente
-FROM db1_tp1.dbo.entrada e
+
+select  c.apellido,c.nombre, sum(s.precio) totalfrom cliente cjoin venta v on c.dni = v.cliente_dni
+join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
 join asiento a on a.id = e.asiento_id
 join seccion s on s.id = a.seccion_id
-join venta v on v.id = e.venta_id
-join cliente c on c.id = v.cliente_DNI
 where l.nombre = 'Defensores del Bajo'
-and r.artista = 'El cuarteto de 3';
+and r.artista = 'El cuarteto de 3'
+group by c.apellido, c.nombre;
 
 
 -- h. Mostrar lo mismo que el punto anterior pero ordenado por nombre de cliente
+
+select  c.apellido,c.nombre, sum(s.precio) totalfrom cliente cjoin venta v on c.dni = v.cliente_dni
+join entrada e on  e.venta_id = v.id
+join recital r on r.id = e.recital_id
+join lugar l on l.id = r.lugar_id
+join asiento a on a.id = e.asiento_id
+join seccion s on s.id = a.seccion_id
+where l.nombre = 'Defensores del Bajo'
+and r.artista = 'El cuarteto de 3'
+group by c.apellido, c.nombre
+order by c.apellido, c.nombre;
