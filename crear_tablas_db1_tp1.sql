@@ -2,7 +2,6 @@ DROP DATABASE db1_tp1;
 CREATE DATABASE db1_tp1;
 
 USE db1_tp1;
-GO
 
 CREATE TABLE cliente (
 dni varchar(10) primary key not null,
@@ -26,9 +25,10 @@ nombre varchar(100)  not null,
 CREATE TABLE recital (
 id int primary key identity (1,1) not null,
 fecha_hora datetime  not null,
-artista varchar(100)  not null,
 lugar_id int  not null,
-FOREIGN KEY (lugar_id) REFERENCES lugar(id)
+artista varchar(100)  not null,
+FOREIGN KEY (lugar_id) REFERENCES lugar(id),
+CONSTRAINT recital_unique UNIQUE (fecha_hora, lugar_id)
 )
 
 CREATE TABLE seccion(

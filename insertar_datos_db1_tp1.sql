@@ -1,23 +1,6 @@
 USE db1_tp1;
 GO
 
--- Eliminar datos y reiniciar IDENTITY en los casos que haga falta
-DELETE FROM seccion_servicio;
-DELETE FROM servicio;
-DBCC CHECKIDENT ('servicio', RESEED, 0);
-DELETE FROM entrada;
-DELETE FROM venta;
-DBCC CHECKIDENT ('venta', RESEED, 0);
-DELETE FROM cliente;
-DELETE FROM asiento;
-DBCC CHECKIDENT ('asiento', RESEED, 0);
-DELETE FROM seccion;
-DBCC CHECKIDENT ('seccion', RESEED, 0);
-DELETE FROM recital;
-DBCC CHECKIDENT ('recital', RESEED, 0);
-DELETE FROM lugar;
-DBCC CHECKIDENT ('lugar', RESEED, 0);
-
 -- Cargo los datos de prueba
  
 INSERT INTO lugar (nombre) VALUES ('Defensores del Bajo');
