@@ -1,75 +1,25 @@
--- CREATE DATABASE db1_tp1;
+USE db1_tp1;
+GO
 
-USE db1_tp1
+-- Eliminar datos y reiniciar IDENTITY en los casos que haga falta
+DELETE FROM seccion_servicio;
+DELETE FROM servicio;
+DBCC CHECKIDENT ('servicio', RESEED, 0);
+DELETE FROM entrada;
+DELETE FROM venta;
+DBCC CHECKIDENT ('venta', RESEED, 0);
+DELETE FROM cliente;
+DELETE FROM asiento;
+DBCC CHECKIDENT ('asiento', RESEED, 0);
+DELETE FROM seccion;
+DBCC CHECKIDENT ('seccion', RESEED, 0);
+DELETE FROM recital;
+DBCC CHECKIDENT ('recital', RESEED, 0);
+DELETE FROM lugar;
+DBCC CHECKIDENT ('lugar', RESEED, 0);
 
-CREATE TABLE cliente (
-dni varchar(10) primary key not null,
-nombre varchar(100),
-apellido varchar(100),
-fecha_nacimiento date
-)
-
-
-CREATE TABLE venta (
-id int primary key identity (1,1) not null,
-fecha date,
-cliente_dni varchar(10),
-FOREIGN KEY (cliente_dni) REFERENCES cliente(dni)
-)
-
-CREATE TABLE lugar (
-id int primary key identity (1,1) not null,
-nombre varchar(100),
-)
-
-CREATE TABLE recital (
-id int primary key identity (1,1) not null,
-fecha_hora datetime,
-artista varchar(100),
-lugar_id int,
-FOREIGN KEY (lugar_id) REFERENCES lugar(id)
-)
-
-CREATE TABLE seccion(
-id int primary key identity (1,1) not null,
-nombre varchar(100),
-precio money,
-lugar_id int,
-capacidad_maxima int,
-FOREIGN KEY (lugar_id) REFERENCES lugar(id)
-)
-
-CREATE TABLE asiento (
-id int primary key identity (1,1) not null,
-fila varchar(100),
-numero varchar(100),
-seccion_id int,
-FOREIGN KEY (seccion_id) REFERENCES seccion(id)
-)
-
-CREATE TABLE servicio (
-id int primary key identity (1,1) not null,
-nombre varchar(100)
-)
-
-CREATE TABLE seccion_servicio (
-seccion_id int not null,
-servicio_id int not null,
-PRIMARY KEY(seccion_id, servicio_id),
-FOREIGN KEY (seccion_id) REFERENCES seccion(id),
-FOREIGN KEY (servicio_id) REFERENCES servicio(id)
-)
-
-CREATE TABLE entrada (
-venta_id int not null,
-recital_id int not null,
-asiento_id int not null,
-PRIMARY KEY(venta_id, recital_id,asiento_id),
-FOREIGN KEY (venta_id) REFERENCES venta(id),
-FOREIGN KEY (recital_id) REFERENCES recital(id),
-FOREIGN KEY (asiento_id) REFERENCES asiento(id)
-);
-
+-- Cargo los datos de prueba
+ 
 INSERT INTO lugar (nombre) VALUES ('Defensores del Bajo');
 
 INSERT INTO recital (fecha_hora, artista, lugar_id)
@@ -78,15 +28,15 @@ VALUES ('2024-06-15 20:00:00', 'El Cuarteto de 3', 1);
 INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES
 ('Campo delantero', 500, 1, 2000),
 ('Campo trasero', 300, 1, 3000),
-('Platea baja 1', 1000, 1, 500),
-('Platea baja 2', 1000, 1, 500),
-('Platea alta 1', 700, 1, 1000),
-('Platea alta 2', 700, 1, 1000);
+('Platea baja 1', 1100, 1, 500),
+('Platea baja 2', 1200, 1, 500),
+('Platea alta 1', 710, 1, 1000),
+('Platea alta 2', 720, 1, 1000);
 
 INSERT INTO asiento (fila, numero, seccion_id) VALUES
 -- Campo delantero
-('0', '0', 1),
-('0', '0', 2),
+('-', '-', 1),
+('-', '-', 2),
 -- Platea baja 1
 ('A', '1', 3),
 ('A', '2', 3),
@@ -206,18 +156,18 @@ INSERT INTO venta (fecha, cliente_dni) VALUES
 INSERT INTO entrada (venta_id, recital_id, asiento_id) VALUES
 (1, 1, 1),
 (1, 1, 2),
-(2, 1, 3),
-(3, 1, 4),
-(4, 1, 5),
-(5, 1, 6),
-(6, 1, 7),
-(7, 1, 8),
-(8, 1, 9),
-(9, 1, 10),
-(10, 1, 11),
-(11, 1, 12),
-(12, 1, 13),
-(13, 1, 14);
+(2, 1, 5),
+(3, 1, 14),
+(4, 1, 25),
+(5, 1, 26),
+(6, 1, 37),
+(7, 1, 48),
+(8, 1, 59),
+(9, 1, 60),
+(10, 1, 71),
+(11, 1, 42),
+(12, 1, 33),
+(13, 1, 24);
 
 INSERT INTO servicio (nombre) VALUES
 ('Acceso exclusivo'),

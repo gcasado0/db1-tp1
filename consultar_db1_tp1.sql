@@ -1,3 +1,6 @@
+USE db1_tp1;
+GO
+
 -- a. Obtener el total de entradas vendidas para el recital del grupo "El Cuarteto de 3" en el estadio "Defensores del Bajo".
 SELECT COUNT(*) total_entradas
 FROM db1_tp1.dbo.entrada e
@@ -93,8 +96,8 @@ join asiento a on a.id = e.asiento_id
 join seccion s on s.id = a.seccion_id
 where l.nombre = 'Defensores del Bajo'
 and r.artista = 'El cuarteto de 3'
-group by c.apellido, c.nombre;
-
+group by c.apellido, c.nombre
+order by total;
 
 -- h. Mostrar lo mismo que el punto anterior pero ordenado por nombre de cliente
 
