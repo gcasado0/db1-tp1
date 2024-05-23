@@ -1,4 +1,4 @@
-DROP DATABASE db1_tp1;
+-- DROP DATABASE db1_tp1;
 CREATE DATABASE db1_tp1;
 
 USE db1_tp1;
@@ -43,8 +43,8 @@ FOREIGN KEY (lugar_id) REFERENCES lugar(id)
 CREATE TABLE asiento (
 id int primary key identity (1,1) not null,
 seccion_id int  not null,
-fila varchar(100)  not null,
-numero varchar(100) not null,
+fila varchar(10)  not null,
+numero varchar(10) not null,
 FOREIGN KEY (seccion_id) REFERENCES seccion(id),
 CONSTRAINT asiento_unique UNIQUE (seccion_id, fila, numero)
 )
@@ -66,7 +66,7 @@ CREATE TABLE entrada (
 venta_id int not null,
 recital_id int not null,
 asiento_id int not null,
-PRIMARY KEY(venta_id, recital_id,asiento_id),
+PRIMARY KEY(venta_id, recital_id, asiento_id),
 FOREIGN KEY (venta_id) REFERENCES venta(id),
 FOREIGN KEY (recital_id) REFERENCES recital(id),
 FOREIGN KEY (asiento_id) REFERENCES asiento(id)

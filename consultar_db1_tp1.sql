@@ -1,5 +1,4 @@
 USE db1_tp1;
-GO
 
 -- a. Obtener el total de entradas vendidas para el recital del grupo "El Cuarteto de 3" en el estadio "Defensores del Bajo".
 SELECT COUNT(*) total_entradas
@@ -10,7 +9,7 @@ where l.nombre = 'Defensores del Bajo'
 and r.artista = 'El cuarteto de 3';
 
 -- b. Determinar el máximo precio de entrada vendida para el recital del grupo "El Cuarteto de 3" en el estadio "Defensores del Bajo".
-SELECT max(precio) precio_maximo
+SELECT max(s.precio) precio_maximo
 FROM db1_tp1.dbo.entrada e
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
@@ -50,7 +49,8 @@ and r.artista = 'El cuarteto de 3';
 -- e. Dado un DNI de un cliente obtener el nombre, la sección, el precio y el número de
 -- asiento (si corresponde) de todas las entradas compradas por ese cliente.
 
-select c.nombre, c.apellido,  s.nombre, s.precio, a.fila, a.numerofrom cliente cjoin venta v on c.dni = v.cliente_dni
+-- Ejemplo 1
+select c.apellido, c.nombre, s.nombre, s.precio, a.fila, a.numerofrom cliente cjoin venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
@@ -60,6 +60,7 @@ where l.nombre = 'Defensores del Bajo'
 and r.artista = 'El cuarteto de 3'
 and c.dni = '12345678A';
 
+-- Ejemplo 2
 select c.nombre, c.apellido,  s.nombre, s.precio, a.fila, a.numerofrom cliente cjoin venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id

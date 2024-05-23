@@ -5,16 +5,16 @@ GO
  
 INSERT INTO lugar (nombre) VALUES ('Defensores del Bajo');
 
-INSERT INTO recital (fecha_hora, artista, lugar_id)
-VALUES ('2024-06-15 20:00:00', 'El Cuarteto de 3', 1);
+INSERT INTO recital (fecha_hora, artista, lugar_id) VALUES 
+('2024-06-15 20:00:00', 'El Cuarteto de 3', 1);
 
 INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES
 ('Campo delantero', 500, 1, 2000),
 ('Campo trasero', 300, 1, 3000),
-('Platea baja 1', 1100, 1, 500),
-('Platea baja 2', 1200, 1, 500),
-('Platea alta 1', 710, 1, 1000),
-('Platea alta 2', 720, 1, 1000);
+('Platea baja 1', 1100, 1, 0),
+('Platea baja 2', 1200, 1, 0),
+('Platea alta 1', 710, 1, 0),
+('Platea alta 2', 720, 1, 0);
 
 INSERT INTO asiento (fila, numero, seccion_id) VALUES
 -- Campo delantero
