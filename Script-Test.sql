@@ -14,6 +14,6 @@ select dbo.GetTotalRecaudado(1, '2024-07-01', '2024-12-31') as Total;
 
 EXEC usp_venta '56789012O','2024-06-25',1,3;
 
-DECLARE @ErrorMessage NVARCHAR(4000);
-EXEC @ErrorMessage = usp_venta '56789012O','2024-06-25',1,300;
-SELECT @ErrorMessage
+
+EXEC usp_venta '56789012O','2024-06-25',1,300;
+

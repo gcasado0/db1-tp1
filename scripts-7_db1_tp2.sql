@@ -36,14 +36,25 @@ BEGIN CATCH
     DECLARE @ErrorMessage NVARCHAR(4000);
     DECLARE @ErrorSeverity INT;
     DECLARE @ErrorState INT;
+    DECLARE @ErrorLine INT;
+    DECLARE @ErrorProcedure NVARCHAR(200);
 
     SELECT 
         @ErrorMessage = ERROR_MESSAGE(),
         @ErrorSeverity = ERROR_SEVERITY(),
-        @ErrorState = ERROR_STATE();
+        @ErrorState = ERROR_STATE(),
+        @ErrorLine = ERROR_LINE(),
+        @ErrorProcedure = ERROR_PROCEDURE();
 
-    --RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
-    RETURN @ErrorMessage
+    -- Mostrar los detalles del error
+    PRINT 'Error Message: ' + @ErrorMessage;
+    PRINT 'Error Severity: ' + CAST(@ErrorSeverity AS NVARCHAR);
+    PRINT 'Error State: ' + CAST(@ErrorState AS NVARCHAR);
+    PRINT 'Error Line: ' + CAST(@ErrorLine AS NVARCHAR);
+    PRINT 'Error Procedure: ' + ISNULL(@ErrorProcedure, '-');
+   
+   RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+   
 END CATCH;
 	
 -- agregar constraint unique en entrada (recital_id, asiento_id)
