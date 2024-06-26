@@ -51,8 +51,7 @@ id int primary key identity (1,1) not null,
 seccion_id int  not null,
 fila varchar(10)  not null,
 numero varchar(10) not null,
-FOREIGN KEY (seccion_id) REFERENCES seccion(id),
-CONSTRAINT asiento_unique UNIQUE (seccion_id, fila, numero)
+FOREIGN KEY (seccion_id) REFERENCES seccion(id)
 )
 
 CREATE TABLE servicio (
@@ -75,5 +74,6 @@ asiento_id int not null,
 PRIMARY KEY(venta_id, recital_id, asiento_id),
 FOREIGN KEY (venta_id) REFERENCES venta(id),
 FOREIGN KEY (recital_id) REFERENCES recital(id),
-FOREIGN KEY (asiento_id) REFERENCES asiento(id)
+FOREIGN KEY (asiento_id) REFERENCES asiento(id),
+CONSTRAINT entrada_unique UNIQUE (recital_id, asiento_id)
 );
