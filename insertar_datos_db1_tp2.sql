@@ -2,26 +2,32 @@ USE db1_tp2;
 
 -- Cargo los datos de prueba
  
-INSERT INTO lugar (nombre) VALUES ('Defensores del Bajo');
-INSERT INTO lugar (nombre) VALUES ('River Plate');
-INSERT INTO lugar (nombre) VALUES ('Boca');
-INSERT INTO lugar (nombre) VALUES ('La Plata');
+INSERT INTO lugar (nombre) VALUES 
+('Defensores del Bajo'),
+('River Plate'),
+('Boca'),
+('Luna Park'),
+('La Plata');
 
-INSERT INTO banda (nombre) VALUES ('Soda Estereo');
-INSERT INTO banda (nombre) VALUES ('ACDC');
-INSERT INTO banda (nombre) VALUES ('Pink FLoyd');
-INSERT INTO banda (nombre) VALUES ('Guns n roses');
-INSERT INTO banda (nombre) VALUES ('El cuarteto de 3');
+INSERT INTO banda (nombre) VALUES 
+('Soda Estereo'),
+('ACDC'),
+('Pink FLoyd'),
+('Guns n roses'),
+('The Beatles'),
+('Queen'),
+('Metallica'),
+('El cuarteto de 3');
 
 INSERT INTO recital (fecha_hora, banda_id, lugar_id) VALUES 
 ('2024-07-15 20:00:00', 1, 1),
 ('2024-07-20 20:00:00', 2, 2),
 ('2024-08-05 20:00:00', 3, 3),
-('2024-09-15 20:00:00', 4, 4),
-('2024-09-25 20:00:00', 1, 2),
-('2024-09-11 20:00:00', 5, 1);
-
-INSERT INTO recital (fecha_hora, banda_id, lugar_id) VALUES ('2024-09-11 20:00:00', 5, 1)
+('2024-09-15 20:00:00', 4, 5),
+('2024-09-25 20:00:00', 8, 2),
+('2024-09-11 20:00:00', 5, 1),
+('2024-10-10 20:00:00', 6, 3),
+('2024-10-20 20:00:00', 7, 4);
 
 INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES
 ('Campo delantero', 500, 1, 2000),
@@ -156,8 +162,14 @@ INSERT INTO venta (fecha, cliente_dni) VALUES
 ('2024-05-10', '01234567J'),
 ('2024-05-11', '12345678K'),
 ('2024-05-12', '23456789L'),
-('2024-05-13', '34567890M');
-
+('2024-05-13', '34567890M'),
+('2024-05-14', '45678901N'),
+('2024-05-15', '56789012O'),
+('2024-05-16', '67890123P'),
+('2024-05-17', '78901234Q'),
+('2024-05-18', '89012345R'),
+('2024-05-19', '90123456S'),
+('2024-05-20', '01234567T');
 
 INSERT INTO entrada (venta_id, recital_id, asiento_id) VALUES
 (1, 1, 1),
