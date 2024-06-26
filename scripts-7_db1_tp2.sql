@@ -3,8 +3,8 @@ compra y realice todos los INSERTS y UPDATES necesarios en las tablas
 correspondientes. Para la modificación de cada tabla deberá llamar a otros SP
 que reciban los datos necesarios. */
 
-drop procedure usp_venta;
-CREATE PROCEDURE usp_venta
+drop procedure usp_compra;
+CREATE PROCEDURE usp_compra
 	@DNI varchar(10),
 	@fecha date,
 	@recital_id INT,
@@ -14,18 +14,12 @@ AS
 BEGIN TRY
 		BEGIN TRANSACTION;
 	
-		DECLARE @NuevoID TABLE (ID INT);
+		DECLARE @VentaID INT;
 	
-		INSERT INTO venta (fecha, cliente_dni)
-		OUTPUT INSERTED.ID INTO @NuevoID(ID)
-		VALUES (@fecha, @DNI);
-		
-	 	DECLARE @IDGenerado INT;
-    	SELECT @IDGenerado = ID FROM @NuevoID;
+		EXEC usp_venta @DNI, @Fecha, @VentaID OUTPUT;
 	
-		INSERT INTO entrada (venta_id, recital_id, asiento_id) 
-		VALUES (@IDGenerado, @recital_id, @asiento_id);
-	
+		EXEC usp_entrada @VentaID, @recital_id, @asiento_id;
+			 	
 		COMMIT TRANSACTION;
 END TRY
 BEGIN CATCH		
@@ -36,23 +30,12 @@ BEGIN CATCH
     DECLARE @ErrorMessage NVARCHAR(4000);
     DECLARE @ErrorSeverity INT;
     DECLARE @ErrorState INT;
-    DECLARE @ErrorLine INT;
-    DECLARE @ErrorProcedure NVARCHAR(200);
 
     SELECT 
         @ErrorMessage = ERROR_MESSAGE(),
         @ErrorSeverity = ERROR_SEVERITY(),
-        @ErrorState = ERROR_STATE(),
-        @ErrorLine = ERROR_LINE(),
-        @ErrorProcedure = ERROR_PROCEDURE();
-
-    -- Mostrar los detalles del error
-    PRINT 'Error Message: ' + @ErrorMessage;
-    PRINT 'Error Severity: ' + CAST(@ErrorSeverity AS NVARCHAR);
-    PRINT 'Error State: ' + CAST(@ErrorState AS NVARCHAR);
-    PRINT 'Error Line: ' + CAST(@ErrorLine AS NVARCHAR);
-    PRINT 'Error Procedure: ' + ISNULL(@ErrorProcedure, '-');
-   
+        @ErrorState = ERROR_STATE()        
+    
    RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
    
 END CATCH;
