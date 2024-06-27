@@ -7,13 +7,13 @@ AS
 
 BEGIN TRY
 
-		DECLARE @NuevoID TABLE (ID INT);
+		DECLARE @TablaID TABLE (ID INT);
 
 		INSERT INTO venta (fecha, cliente_dni)
 		OUTPUT INSERTED.ID INTO @TablaID(ID)
 		VALUES (@fecha, @DNI);
 
-    	SELECT @IDGenerado = ID FROM @NuevoID;
+    	SELECT @IDGenerado = ID FROM @TablaID;
 
 END TRY
 BEGIN CATCH

@@ -2,7 +2,7 @@
 -- devuelva el total recaudado en los recitales entre esas dos fechas.
 
 DROP FUNCTION GetTotalRecaudado;
-CREATE FUNCTION GetTotalRecaudado(@ID INT, @desde date, @hasta date)
+CREATE FUNCTION GetTotalRecaudado(@banda_id INT, @desde date, @hasta date)
 RETURNS money
 AS
 BEGIN
@@ -11,12 +11,9 @@ BEGIN
 	SELECT @total = sum(s.precio)
 	FROM entrada e
 	join recital r on r.id = e.recital_id
-	join lugar l on l.id = r.lugar_id
 	join asiento a on a.id = e.asiento_id
-	join seccion s on s.id = a.seccion_id
-	join banda b on b.id = r.banda_id
-	where l.nombre = 'Defensores del Bajo'
-	and b.nombre = 'El cuarteto de 3'
+	join seccion s on s.id = a.seccion_id	
+	where r.banda_id = @banda_id
 	and cast(r.fecha_hora as date) >= @desde
 	and cast(r.fecha_hora as date) <= @hasta
 

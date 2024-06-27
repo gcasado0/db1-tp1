@@ -44,7 +44,7 @@ INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES
 ('Platea baja 1', 2100, 2, 0),
 ('Platea baja 2', 2200, 2, 0),
 ('Platea alta 1', 1710, 2, 0),
-('Platea alta 2', 1720, 2, 0);
+('Platea alta 2', 1720, 2, 0),
 -- Boca
 ('Campo delantero', 500, 3, 2000),
 ('Campo trasero', 300, 3, 3000),
@@ -58,14 +58,14 @@ INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES
 ('Platea baja 1', 2100, 4, 0),
 ('Platea baja 2', 2200, 4, 0),
 ('Platea alta 1', 1710, 4, 0),
-('Platea alta 2', 1720, 4, 0);
+('Platea alta 2', 1720, 4, 0),
 -- La plata
 ('Campo delantero', 500, 5, 2000),
 ('Campo trasero', 300, 5, 3000),
 ('Platea baja 1', 1100, 5, 0),
 ('Platea baja 2', 1200, 5, 0),
 ('Platea alta 1', 710, 5, 0),
-('Platea alta 2', 720, 5, 0),
+('Platea alta 2', 720, 5, 0);
 
 INSERT INTO asiento (fila, numero, seccion_id) VALUES
 -- Defensores del Bajo

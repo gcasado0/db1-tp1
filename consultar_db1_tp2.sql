@@ -67,7 +67,7 @@ join seccion s on s.id = a.seccion_id
 JOIN banda b ON b.id = r.banda_id
 where l.nombre = 'Defensores del Bajo'
 and b.nombre = 'El cuarteto de 3'
-and c.dni = '12345678K';
+and c.dni = '45678901N';
 
 -- Ejemplo 2
 select c.nombre, c.apellido,  s.nombre, s.precio, a.fila, a.numero 
@@ -81,7 +81,7 @@ join seccion s on s.id = a.seccion_id
 JOIN banda b ON b.id = r.banda_id
 where l.nombre = 'Defensores del Bajo'
 and b.nombre = 'El cuarteto de 3'
-and c.dni = '34567890M';
+and c.dni = '67890123P';
 
 
 -- f. Calcular el total de entradas vendidas por cada sección para el recital del grupo "El
