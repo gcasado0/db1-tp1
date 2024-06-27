@@ -6,29 +6,28 @@ CREATE PROCEDURE usp_venta
 AS
 
 BEGIN TRY
-	
-		DECLARE @TablaID TABLE (ID INT);
-	
+
+		DECLARE @NuevoID TABLE (ID INT);
+
 		INSERT INTO venta (fecha, cliente_dni)
 		OUTPUT INSERTED.ID INTO @TablaID(ID)
 		VALUES (@fecha, @DNI);
-			 	
-    	SELECT @IDGenerado = ID FROM @TablaID;
-		
+
+    	SELECT @IDGenerado = ID FROM @NuevoID;
+
 END TRY
-BEGIN CATCH		    
+BEGIN CATCH
 
     -- Capturar y mostrar el error
     DECLARE @ErrorMessage NVARCHAR(4000);
     DECLARE @ErrorSeverity INT;
     DECLARE @ErrorState INT;
 
-    SELECT 
+    SELECT
         @ErrorMessage = ERROR_MESSAGE(),
         @ErrorSeverity = ERROR_SEVERITY(),
-        @ErrorState = ERROR_STATE()        
-    
+        @ErrorState = ERROR_STATE()
+
    RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
-   
+
 END CATCH;
-	

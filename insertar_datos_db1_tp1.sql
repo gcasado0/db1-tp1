@@ -2,10 +2,9 @@ USE db1_tp1;
 GO
 
 -- Cargo los datos de prueba
- 
 INSERT INTO lugar (nombre) VALUES ('Defensores del Bajo');
 
-INSERT INTO recital (fecha_hora, artista, lugar_id) VALUES 
+INSERT INTO recital (fecha_hora, artista, lugar_id) VALUES
 ('2024-06-15 20:00:00', 'El Cuarteto de 3', 1);
 
 INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES

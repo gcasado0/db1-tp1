@@ -7,7 +7,7 @@ CREATE TABLE cliente (
 dni varchar(10) primary key not null,
 nombre varchar(100) not null,
 apellido varchar(100) not null,
-fecha_nacimiento date 
+fecha_nacimiento date
 )
 
 CREATE TABLE venta (

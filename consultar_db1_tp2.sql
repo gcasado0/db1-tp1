@@ -1,4 +1,6 @@
--- a. Obtener el total de entradas vendidas para el recital del grupo "El Cuarteto de 3" en el estadio "Defensores del Bajo".
+-- a. Obtener el total de entradas vendidas para el recital del grupo 
+--"El Cuarteto de 3" en el estadio "Defensores del Bajo".
+
 SELECT COUNT(*) total_entradas
 FROM db1_tp2.dbo.entrada e
 join recital r on r.id = e.recital_id
@@ -7,7 +9,9 @@ JOIN banda b ON b.id = r.banda_id
 where l.nombre = 'Defensores del Bajo'
 and b.nombre = 'El cuarteto de 3';
 
--- b. Determinar el máximo precio de entrada vendida para el recital del grupo "El Cuarteto de 3" en el estadio "Defensores del Bajo".
+-- b. Determinar el máximo precio de entrada vendida para el recital del grupo
+--"El Cuarteto de 3" en el estadio "Defensores del Bajo".
+
 SELECT max(s.precio) precio_maximo
 FROM db1_tp2.dbo.entrada e
 join recital r on r.id = e.recital_id
@@ -52,7 +56,9 @@ and b.nombre = 'El cuarteto de 3';
 -- asiento (si corresponde) de todas las entradas compradas por ese cliente.
 
 -- Ejemplo 1
-select c.apellido, c.nombre, s.nombre, s.precio, a.fila, a.numero from db1_tp2.dbo.cliente cjoin venta v on c.dni = v.cliente_dni
+select c.apellido, c.nombre, s.nombre, s.precio, a.fila, a.numero 
+from db1_tp2.dbo.cliente c
+join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
@@ -64,7 +70,9 @@ and b.nombre = 'El cuarteto de 3'
 and c.dni = '12345678K';
 
 -- Ejemplo 2
-select c.nombre, c.apellido,  s.nombre, s.precio, a.fila, a.numero from db1_tp2.dbo.cliente cjoin venta v on c.dni = v.cliente_dni
+select c.nombre, c.apellido,  s.nombre, s.precio, a.fila, a.numero 
+from db1_tp2.dbo.cliente c
+join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
@@ -94,7 +102,9 @@ group by s.nombre;
 -- cliente para el recital del grupo "El Cuarteto de 3" en el estadio "Defensores del
 -- Bajo", ordenado por el precio total
 
-select  c.apellido,c.nombre, sum(s.precio) totalfrom db1_tp2.dbo.cliente cjoin venta v on c.dni = v.cliente_dni
+select  c.apellido,c.nombre, sum(s.precio) total
+from db1_tp2.dbo.cliente c
+join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
@@ -108,7 +118,9 @@ order by total;
 
 -- h. Mostrar lo mismo que el punto anterior pero ordenado por nombre de cliente
 
-select  c.apellido,c.nombre, sum(s.precio) totalfrom db1_tp2.dbo.cliente cjoin venta v on c.dni = v.cliente_dni
+select  c.apellido,c.nombre, sum(s.precio) total
+from db1_tp2.dbo.cliente c
+join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id

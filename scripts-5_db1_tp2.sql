@@ -5,10 +5,10 @@ RETURNS INTEGER
 AS
 BEGIN
 	DECLARE @ID INTEGER
-	
+
 	SELECT @ID = b.id
 	FROM banda b
 	where b.nombre= @nombre
-	
+
 	RETURN @ID
 END

@@ -50,7 +50,9 @@ and r.artista = 'El cuarteto de 3';
 -- asiento (si corresponde) de todas las entradas compradas por ese cliente.
 
 -- Ejemplo 1
-select c.apellido, c.nombre, s.nombre, s.precio, a.fila, a.numerofrom cliente cjoin venta v on c.dni = v.cliente_dni
+select c.apellido, c.nombre, s.nombre, s.precio, a.fila, a.numero
+from cliente c
+join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
@@ -61,7 +63,9 @@ and r.artista = 'El cuarteto de 3'
 and c.dni = '12345678A';
 
 -- Ejemplo 2
-select c.nombre, c.apellido,  s.nombre, s.precio, a.fila, a.numerofrom cliente cjoin venta v on c.dni = v.cliente_dni
+select c.nombre, c.apellido,  s.nombre, s.precio, a.fila, a.numero
+from cliente c
+join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
@@ -89,7 +93,9 @@ group by s.nombre;
 -- cliente para el recital del grupo "El Cuarteto de 3" en el estadio "Defensores del
 -- Bajo", ordenado por el precio total
 
-select  c.apellido,c.nombre, sum(s.precio) totalfrom cliente cjoin venta v on c.dni = v.cliente_dni
+select  c.apellido,c.nombre, sum(s.precio) total
+from cliente c
+join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
@@ -102,7 +108,9 @@ order by total;
 
 -- h. Mostrar lo mismo que el punto anterior pero ordenado por nombre de cliente
 
-select  c.apellido,c.nombre, sum(s.precio) totalfrom cliente cjoin venta v on c.dni = v.cliente_dni
+select  c.apellido,c.nombre, sum(s.precio) total
+from cliente c
+join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id

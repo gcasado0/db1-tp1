@@ -1,15 +1,15 @@
 USE db1_tp2;
 
 -- Cargo los datos de prueba
- 
-INSERT INTO lugar (nombre) VALUES 
+
+INSERT INTO lugar (nombre) VALUES
 ('Defensores del Bajo'),
 ('River Plate'),
 ('Boca'),
 ('Luna Park'),
 ('La Plata');
 
-INSERT INTO banda (nombre) VALUES 
+INSERT INTO banda (nombre) VALUES
 ('Soda Estereo'),
 ('ACDC'),
 ('Pink FLoyd'),
@@ -19,7 +19,7 @@ INSERT INTO banda (nombre) VALUES
 ('Metallica'),
 ('El cuarteto de 3');
 
-INSERT INTO recital (fecha_hora, banda_id, lugar_id) VALUES 
+INSERT INTO recital (fecha_hora, banda_id, lugar_id) VALUES
 ('2024-07-15 20:00:00', 1, 1),
 ('2024-07-20 20:00:00', 2, 2),
 ('2024-08-05 20:00:00', 3, 3),
@@ -27,6 +27,7 @@ INSERT INTO recital (fecha_hora, banda_id, lugar_id) VALUES
 ('2024-09-25 20:00:00', 8, 2),
 ('2024-09-11 20:00:00', 5, 1),
 ('2024-10-10 20:00:00', 6, 3),
+('2024-09-13 20:00:00', 8, 1),
 ('2024-10-20 20:00:00', 7, 4);
 
 INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES
@@ -35,9 +36,7 @@ INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES
 ('Platea baja 1', 1100, 1, 0),
 ('Platea baja 2', 1200, 1, 0),
 ('Platea alta 1', 710, 1, 0),
-('Platea alta 2', 720, 1, 0);
-
-INSERT INTO seccion (nombre, precio, lugar_id, capacidad_maxima) VALUES
+('Platea alta 2', 720, 1, 0),
 ('Campo delantero', 1500, 2, 2000),
 ('Campo trasero', 1300, 2, 3000),
 ('Platea baja 1', 2100, 2, 0),
@@ -49,82 +48,38 @@ INSERT INTO asiento (fila, numero, seccion_id) VALUES
 -- Campo delantero
 ('-', '-', 1),
 ('-', '-', 2),
+('-', '-', 1),
+('-', '-', 2),
+('-', '-', 1),
+('-', '-', 2),
 -- Platea baja 1
 ('A', '1', 3),
 ('A', '2', 3),
-('A', '3', 3),
-('A', '4', 3),
-('A', '5', 3),
-('A', '6', 3),
 ('B', '1', 3),
 ('B', '2', 3),
-('B', '3', 3),
-('B', '4', 3),
-('B', '5', 3),
-('B', '6', 3),
 ('C', '1', 3),
 ('C', '2', 3),
-('C', '3', 3),
-('C', '4', 3),
-('C', '5', 3),
-('C', '6', 3),
 -- Platea baja 2
 ('A', '1', 4),
 ('A', '2', 4),
-('A', '3', 4),
-('A', '4', 4),
-('A', '5', 4),
-('A', '6', 4),
 ('B', '1', 4),
 ('B', '2', 4),
-('B', '3', 4),
-('B', '4', 4),
-('B', '5', 4),
-('B', '6', 4),
 ('C', '1', 4),
 ('C', '2', 4),
-('C', '3', 4),
-('C', '4', 4),
-('C', '5', 4),
-('C', '6', 4),
 -- Platea alta 1
 ('A', '1', 5),
 ('A', '2', 5),
-('A', '3', 5),
-('A', '4', 5),
-('A', '5', 5),
-('A', '6', 5),
 ('B', '1', 5),
 ('B', '2', 5),
-('B', '3', 5),
-('B', '4', 5),
-('B', '5', 5),
-('B', '6', 5),
 ('C', '1', 5),
 ('C', '2', 5),
-('C', '3', 5),
-('C', '4', 5),
-('C', '5', 5),
-('C', '6', 5),
 -- Platea alta 2
 ('A', '1', 6),
 ('A', '2', 6),
-('A', '3', 6),
-('A', '4', 6),
-('A', '5', 6),
-('A', '6', 6),
 ('B', '1', 6),
 ('B', '2', 6),
-('B', '3', 6),
-('B', '4', 6),
-('B', '5', 6),
-('B', '6', 6),
 ('C', '1', 6),
 ('C', '2', 6),
-('C', '3', 6),
-('C', '4', 6),
-('C', '5', 6),
-('C', '6', 6);
 
 INSERT INTO cliente (dni, nombre, apellido, fecha_nacimiento) VALUES
 ('12345678A', 'Juan', 'Pérez', '1980-01-01'),
@@ -147,7 +102,6 @@ INSERT INTO cliente (dni, nombre, apellido, fecha_nacimiento) VALUES
 ('89012345R', 'Pedro', 'Pérez', '1990-06-18'),
 ('90123456S', 'Natalia', 'Flores', '1994-07-19'),
 ('01234567T', 'Jorge', 'Hernández', '1981-08-20');
-
 
 INSERT INTO venta (fecha, cliente_dni) VALUES
 ('2024-05-01', '12345678A'),
@@ -173,26 +127,26 @@ INSERT INTO venta (fecha, cliente_dni) VALUES
 
 INSERT INTO entrada (venta_id, recital_id, asiento_id) VALUES
 (1, 1, 1),
-(1, 1, 2),
+(1, 7, 2),
 (2, 1, 5),
-(3, 1, 14),
+(3, 5, 14),
 (4, 1, 25),
-(5, 1, 26),
-(6, 1, 37),
-(7, 1, 48),
-(8, 1, 59),
-(9, 1, 60),
-(10, 1, 71),
-(11, 1, 42),
-(12, 1, 33),
-(13, 1, 24);
-
-INSERT INTO entrada (venta_id, recital_id, asiento_id) VALUES
-(10, 6, 71),
-(11, 6, 42),
-(12, 6, 33),
-(13, 6, 24);
-
+(5, 3, 26),
+(6, 1, 27),
+(7, 2, 28),
+(8, 6, 19),
+(9, 1, 6),
+(10, 5, 11),
+(11, 1, 12),
+(12, 4, 23),
+(13, 1, 24),
+(14, 8, 12),
+(15, 8, 25),
+(16, 8, 5),
+(10, 6, 11),
+(11, 6, 22),
+(12, 6, 29),
+(13, 6, 14);
 
 INSERT INTO servicio (nombre) VALUES
 ('Acceso exclusivo'),

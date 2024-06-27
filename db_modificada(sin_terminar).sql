@@ -257,7 +257,7 @@ SELECT COUNT(*) total_entradas
 FROM db1_tp1.dbo.entrada e
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
-join banda b on b.id = r.banda_id 
+join banda b on b.id = r.banda_id
 where l.nombre = 'Defensores del Bajo'
 and b.id = 7;
 
@@ -267,7 +267,7 @@ SELECT max(s.precio) precio_maximo
 FROM db1_tp1.dbo.entrada e
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
-join banda b on b.id = r.banda_id 
+join banda b on b.id = r.banda_id
 join asiento a on a.id = e.asiento_id
 join seccion s on s.id = a.seccion_id
 where l.nombre = 'Defensores del Bajo'
@@ -285,7 +285,7 @@ and l.nombre = 'Defensores del Bajo'
 and a.id not in (SELECT asiento_id
 FROM db1_tp1.dbo.entrada e
 join recital r on r.id = e.recital_id
-join banda b on b.id = r.banda_id 
+join banda b on b.id = r.banda_id
 join lugar l on l.id = r.lugar_id
 where l.nombre = 'Defensores del Bajo'
 and r.banda_id = 7);
@@ -297,7 +297,7 @@ SELECT sum(s.precio) total_ingresos
 FROM db1_tp1.dbo.entrada e
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
-join banda b on b.id = r.banda_id 
+join banda b on b.id = r.banda_id
 join asiento a on a.id = e.asiento_id
 join seccion s on s.id = a.seccion_id
 where l.nombre = 'Defensores del Bajo'
@@ -312,7 +312,7 @@ from cliente c
 join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
-join banda b on b.id = r.banda_id 
+join banda b on b.id = r.banda_id
 join lugar l on l.id = r.lugar_id
 join asiento a on a.id = e.asiento_id
 join seccion s on s.id = a.seccion_id
@@ -326,7 +326,7 @@ from cliente c
 join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
-join banda b on b.id = r.banda_id 
+join banda b on b.id = r.banda_id
 join lugar l on l.id = r.lugar_id
 join asiento a on a.id = e.asiento_id
 join seccion s on s.id = a.seccion_id
@@ -342,7 +342,7 @@ SELECT s.nombre seccion, count(s.id) total_entradas
 FROM db1_tp1.dbo.entrada e
 join recital r on r.id = e.recital_id
 join lugar l on l.id = r.lugar_id
-join banda b on b.id = r.banda_id 
+join banda b on b.id = r.banda_id
 join asiento a on a.id = e.asiento_id
 join seccion s on s.id = a.seccion_id
 where l.nombre = 'Defensores del Bajo'
@@ -357,7 +357,7 @@ from cliente c
 join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
-join banda b on b.id = r.banda_id 
+join banda b on b.id = r.banda_id
 join lugar l on l.id = r.lugar_id
 join asiento a on a.id = e.asiento_id
 join seccion s on s.id = a.seccion_id
@@ -373,7 +373,7 @@ from cliente c
 join venta v on c.dni = v.cliente_dni
 join entrada e on  e.venta_id = v.id
 join recital r on r.id = e.recital_id
-join banda b on b.id = r.banda_id 
+join banda b on b.id = r.banda_id
 join lugar l on l.id = r.lugar_id
 join asiento a on a.id = e.asiento_id
 join seccion s on s.id = a.seccion_id
