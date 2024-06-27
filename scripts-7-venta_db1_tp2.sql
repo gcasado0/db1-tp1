@@ -14,7 +14,7 @@ BEGIN TRY
 		VALUES (@fecha, @DNI);
 
     	SELECT @IDGenerado = ID FROM @TablaID;
-
+    	
 END TRY
 BEGIN CATCH
 
