@@ -43,7 +43,7 @@ BEGIN TRY
 	        FETCH NEXT FROM asiento_cursor INTO @asiento_id;
 	    END;
 	    
-	    -- Cerrar y libera la memoria del cursor
+	    -- Cerrar y liberar la memoria del cursor
 	    CLOSE asiento_cursor;
 	    DEALLOCATE asiento_cursor;
 		
